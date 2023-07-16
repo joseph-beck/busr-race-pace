@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import datetime
 
-def run(path='assets/qatar-race-pace.csv', dark_mode=False, node=True):
+
+def make_pace_graph(path='races/qatar-race-pace.csv', dark_mode=False, node=True):
     # Read data from CSV file
     data = []
     with open(path, 'r') as file:
