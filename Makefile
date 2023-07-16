@@ -2,9 +2,9 @@ PYTHON ?= python3
 PIP ?= pip
 
 install:
-	$(PIP) install curses datetime numpy csv matplotlib
+	$(PIP) install curses datetime numpy csv matplotlib scipy
 
 run:
-	$(PYTHON) main.py
+	$(PYTHON) src/main.py
 
 .phony: install run

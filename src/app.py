@@ -1,15 +1,18 @@
-from src.ui import select_file
-from src.graphs import make_pace_graph
+from ui import select_option, select_file, show_selected_file, show_selected_option
+from graphs import make_continuous_race_pace, make_average_race_pace
 
 
 def run(stdscr):
+    options = ['Race Pace', 'Average Race Pace']
+    option = select_option(stdscr, options)
+    show_selected_option(stdscr, option)
+
     dir = 'races'
     selected = select_file(stdscr, dir)
-    
-    stdscr.clear()
-    stdscr.addstr(0, 0, f"You selected: {selected.removeprefix(f'{dir}/').removesuffix(f'.csv')}")
-    stdscr.addstr(1, 0, f"Press enter to make graph!")
-    stdscr.refresh()
-    stdscr.getch()
+    show_selected_file(stdscr, selected)
 
-    make_pace_graph(selected)
+    if option == 'Race Pace':
+        make_continuous_race_pace(selected)
+    elif option == 'Average Race Pace':
+        make_average_race_pace(selected)
+    

@@ -9,6 +9,7 @@ Make graphs of race pace from a given CSV.
 - matplotlib
 - datetime
 - csv
+- scipy
 
 ## *`Usage`*
 
