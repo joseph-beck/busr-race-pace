@@ -7,4 +7,7 @@ install:
 run:
 	$(PYTHON) src/main.py
 
-.phony: install run
+dev:
+	$(PYTHON) src/dev.py
+
+.phony: install run dev
