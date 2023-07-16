@@ -4,10 +4,10 @@ import numpy as np
 import datetime
 
 
-def make_pace_graph(path='races/qatar-race-pace.csv', dark_mode=False, node=True):
+def make_pace_graph(race_data, dark_mode=False, node=True):
     # Read data from CSV file
     data = []
-    with open(path, 'r') as file:
+    with open(race_data, 'r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             data.append(row)
