@@ -4,7 +4,9 @@ import numpy as np
 import datetime
 from scipy import stats
 
-
+"""
+Creates a graph showing the continuous race pace of each driver, smoothed a bit by removing outlier pieces of data.
+"""
 def make_continuous_race_pace(data_path, dark_mode=False, node=True):
     # Read data from CSV file
     data = []
@@ -85,7 +87,10 @@ def make_continuous_race_pace(data_path, dark_mode=False, node=True):
     plt.show()
 
 
-def make_average_race_pace(data_path, dark_mode=False, threshold=3):
+"""
+Creates a graph showing the average race pace of each driver, relative to the driver with the fastest average.
+"""
+def make_average_race_pace(data_path, dark_mode=False, horizontal=False, threshold=3):
     # Create a dictionary to store lap times per driver
     lap_times_per_driver = {}
 
@@ -136,11 +141,18 @@ def make_average_race_pace(data_path, dark_mode=False, threshold=3):
     # Create a larger figure to increase space for x-axis labels
     plt.figure(figsize=(12, 6))
 
-    # Create a bar chart of relative lap times per driver
-    plt.bar(drivers, relative_lap_times, color=colors)
-    plt.xlabel('Driver')
-    plt.ylabel('Relative Lap Time')
-    plt.title('Average Race Pace relative to Fastest Driver')
-    plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels and align to the right
+    if horizontal:
+        # Create horizontal a bar chart of relative lap times per driver
+        plt.barh(drivers, relative_lap_times, color=colors)
+        plt.xlabel('Relative Lap Time')
+        plt.ylabel('Driver')
+    else:
+        # Create vertical a bar chart of relative lap times per driver
+        plt.bar(drivers, relative_lap_times, color=colors)
+        plt.xlabel('Driver')
+        plt.ylabel('Relative Lap Time')
+        plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels and align to the right
+        
+    plt.title('Average Race Pace Gap Relative to Fastest Driver')
     plt.tight_layout()  # Adjust spacing to prevent labels from overlapping
     plt.show()
