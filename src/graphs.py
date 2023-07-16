@@ -4,6 +4,7 @@ import numpy as np
 import datetime
 from scipy import stats
 
+
 """
 Creates a graph showing the continuous race pace of each driver, smoothed a bit by removing outlier pieces of data.
 """
